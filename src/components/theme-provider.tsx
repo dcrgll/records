@@ -1,41 +1,41 @@
-import { createContext, useContext, useEffect, useState } from 'react'
+import { createContext, useContext, useEffect, useState } from 'react';
 
-import { Appearance } from 'react-native'
+import { Appearance } from 'react-native';
 
-import { darkTheme, lightTheme } from '@/config/theme'
+import { darkTheme, lightTheme } from '@/config/theme';
 import {
   DefaultTheme,
   ThemeProvider as StyledThemeProvider
-} from 'styled-components/native'
+} from 'styled-components/native';
 
 // Theme Context Type
 interface ThemeContextType {
-  isDarkMode: boolean
-  toggleTheme: () => void
-  theme: DefaultTheme
+  isDarkMode: boolean;
+  toggleTheme: () => void;
+  theme: DefaultTheme;
 }
 
 // Create Context
-const ThemeContext = createContext<ThemeContextType | undefined>(undefined)
+const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
   const [isDarkMode, setIsDarkMode] = useState(
     Appearance.getColorScheme() === 'dark'
-  )
+  );
 
   useEffect(() => {
     const subscription = Appearance.addChangeListener(({ colorScheme }) => {
-      setIsDarkMode(colorScheme === 'dark') // Force update
-    })
+      setIsDarkMode(colorScheme === 'dark'); // Force update
+    });
 
-    return () => subscription.remove() // Cleanup
-  }, [])
+    return () => subscription.remove(); // Cleanup
+  }, []);
 
   const toggleTheme = () => {
-    setIsDarkMode((prev) => !prev)
-  }
+    setIsDarkMode((prev) => !prev);
+  };
 
-  const whichTheme = isDarkMode ? darkTheme : lightTheme
+  const whichTheme = isDarkMode ? darkTheme : lightTheme;
 
   return (
     <ThemeContext.Provider
@@ -47,14 +47,14 @@ export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
     >
       <StyledThemeProvider theme={whichTheme}>{children}</StyledThemeProvider>
     </ThemeContext.Provider>
-  )
-}
+  );
+};
 
 // Custom Hook
 export const useThemeSwitcher = () => {
-  const context = useContext(ThemeContext)
+  const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error('useThemeSwitcher must be used within a ThemeProvider')
+    throw new Error('useThemeSwitcher must be used within a ThemeProvider');
   }
-  return context
-}
+  return context;
+};

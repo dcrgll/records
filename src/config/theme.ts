@@ -1,4 +1,4 @@
-import { DefaultTheme } from 'styled-components/native'
+import { DefaultTheme } from 'styled-components/native';
 
 const lightTheme: DefaultTheme = {
   colors: {
@@ -23,7 +23,7 @@ const lightTheme: DefaultTheme = {
     ring: 'hsl(262.1, 83.3%, 57.8%)'
   },
   radius: '16px'
-}
+};
 
 const darkTheme: DefaultTheme = {
   colors: {
@@ -48,6 +48,6 @@ const darkTheme: DefaultTheme = {
     ring: 'hsl(263.4, 70%, 50.4%)'
   },
   radius: '0.75rem'
-}
+};
 
-export { darkTheme, lightTheme }
+export { darkTheme, lightTheme };

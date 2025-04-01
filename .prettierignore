@@ -4,3 +4,4 @@ android
 .expo
 .vscode
 .eslintignore
+.pnpm-lock.yaml

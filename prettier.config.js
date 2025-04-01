@@ -21,5 +21,6 @@ module.exports = {
   arrowParens: 'always',
   endOfLine: 'auto',
   proseWrap: 'preserve',
-  htmlWhitespaceSensitivity: 'css'
+  htmlWhitespaceSensitivity: 'css',
+  singleAttributePerLine: true
 };
