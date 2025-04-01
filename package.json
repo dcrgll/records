@@ -61,5 +61,8 @@
   "resolutions": {
     "styled-components": "^5"
   },
-  "private": true
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  }
 }
